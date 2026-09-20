@@ -4,7 +4,10 @@ import {
   BadgeIndianRupee,
   Building2,
   CheckCircle2,
+  ClipboardCheck,
+  Compass,
   FileText,
+  Handshake,
   Home,
   LandPlot,
   Mail,
@@ -59,6 +62,37 @@ const recentListings = [
   'Commercial spaces near main road'
 ];
 
+const recentListingImages = [
+  'https://upload.wikimedia.org/wikipedia/commons/e/e1/Ambience_Mall,_Gurgaon.jpg',
+  'https://commons.wikimedia.org/wiki/Special:FilePath/Vue_de_quartier_r%C3%A9sidentiel_%C3%A0_Gurgaon.jpg',
+  'https://commons.wikimedia.org/wiki/Special:FilePath/Vipul_Arcade,_Sushant_Lok,_Gurgaon.jpg',
+  'https://commons.wikimedia.org/wiki/Special:FilePath/Sector-47,_Gurgaon.jpg'
+];
+
+const propertyHighlights = [
+  {
+    title: 'Gurgaon Residential Areas',
+    text: 'Established neighborhoods and practical homes for everyday living.',
+    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sector-47,_Gurgaon.jpg'
+  },
+  {
+    title: 'Commercial Spaces',
+    text: 'Road-facing shops and practical spaces for growing businesses.',
+    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Cyber_Green_Building,_Gurgaon,_Haryana,_India_-_20070613.jpg'
+  },
+  {
+    title: 'Homes & Floors',
+    text: 'Builder floors, houses, and rental options around Gurgaon.',
+    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Vue_de_quartier_r%C3%A9sidentiel_%C3%A0_Gurgaon.jpg'
+  }
+];
+
+const serviceSteps = [
+  { icon: Compass, title: 'Share your requirement', text: 'Tell us your budget, preferred area, and property type.' },
+  { icon: ClipboardCheck, title: 'Shortlist options', text: 'We narrow down suitable sale, purchase, or rental choices.' },
+  { icon: Handshake, title: 'Visit and discuss', text: 'Compare the options clearly and move forward with confidence.' }
+];
+
 function App() {
   return (
     <main className="page-shell">
@@ -110,8 +144,8 @@ function App() {
           </div>
         </div>
         <div className="hero-images" aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80" alt="" />
-          <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=700&q=80" alt="" />
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Gurgaon_skyline.jpg" alt="" />
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ambience_Mall,_Gurgaon.jpg" alt="" />
         </div>
       </section>
 
@@ -123,6 +157,13 @@ function App() {
         <a href={`tel:+91${phoneNumbers[0]}`}>Call Now</a>
       </section>
 
+      <section className="stats-band" aria-label="Jai Hanuman Ji Property at a glance">
+        <div><strong>7+</strong><span>Local areas covered</span></div>
+        <div><strong>25+</strong><span>Plot sizes available</span></div>
+        <div><strong>4</strong><span>Property categories</span></div>
+        <div><strong>1</strong><span>Clear point of contact</span></div>
+      </section>
+
       <section className="section services" id="services">
         <h2>Our Services</h2>
         <div className="service-icons">
@@ -131,6 +172,28 @@ function App() {
               <service.icon size={44} />
               <span>{service.label}</span>
             </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="section showcase-section" aria-labelledby="showcase-title">
+        <div className="section-heading-row">
+          <div>
+            <span className="eyebrow">Options worth exploring</span>
+            <h2 id="showcase-title">Find the right kind of space</h2>
+          </div>
+          <p>From a first plot to a practical commercial address, we help you compare the details that matter.</p>
+        </div>
+        <div className="showcase-grid">
+          {propertyHighlights.map((property) => (
+            <article className="showcase-card" key={property.title}>
+              <div className="showcase-image"><img src={property.image} alt={property.title} /></div>
+              <div className="showcase-copy">
+                <h3>{property.title}</h3>
+                <p>{property.text}</p>
+                <a href="#contact">Discuss options <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
           ))}
         </div>
       </section>
@@ -177,6 +240,24 @@ function App() {
         </div>
       </section>
 
+      <section className="process-section" aria-labelledby="process-title">
+        <div className="process-intro">
+          <span className="eyebrow">A simpler way to choose</span>
+          <h2 id="process-title">From requirement to site visit</h2>
+          <p>No confusing lists or rushed decisions. We keep the conversation practical from the first call.</p>
+        </div>
+        <div className="process-steps">
+          {serviceSteps.map((step, index) => (
+            <article key={step.title}>
+              <span className="step-number">0{index + 1}</span>
+              <step.icon size={28} />
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="cta-strip">
         <h2>Need a Property Option Today?</h2>
         <p>Share your budget, location preference, and property type. We will help you shortlist suitable options for sale, purchase, or rent.</p>
@@ -203,7 +284,7 @@ function App() {
           <div className="recent-grid">
             {recentListings.map((item, index) => (
               <figure key={item}>
-                <img src={index % 2 === 0 ? 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=300&q=80' : 'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=300&q=80'} alt={item} />
+                <img src={recentListingImages[index]} alt={item} />
                 <figcaption>{item}</figcaption>
               </figure>
             ))}
