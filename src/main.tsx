@@ -17,6 +17,7 @@ import {
 import './styles.css';
 
 const phoneNumbers = ['9716142888', '9891357416', '9953162725', '8130403897'];
+const mapLink = 'https://maps.app.goo.gl/1LfuDjcNBUCttDuQ6';
 
 const services = [
   { icon: LandPlot, label: 'Plots For Sale' },
@@ -171,9 +172,11 @@ function App() {
           <h3>Contact</h3>
           <strong>Jai Hanuman Ji Property</strong>
           <p>G-80, RK Tower, Palam Vihar Extn., Dharam Colony, Gurgaon (Hr) 122017</p>
-          {phoneNumbers.map((number, index) => (
-            <a key={number} href={`tel:+91${number}`}>{index === 0 && <Phone size={16} />} {number}</a>
-          ))}
+          <div className="contact-phones">
+            {phoneNumbers.map((number, index) => (
+              <a key={number} href={`tel:+91${number}`}>{index === 0 && <Phone size={16} />} {number}</a>
+            ))}
+          </div>
           <a href="mailto:harishshandilya@gmail.com"><Mail size={16} /> harishshandilya@gmail.com</a>
         </div>
 
@@ -191,9 +194,19 @@ function App() {
 
         <div className="map-panel">
           <div className="map-card">
-            <span className="pin"><MapPin size={26} fill="currentColor" /></span>
-            <p>Palam Vihar Extn.</p>
-            <small>Dharam Colony, Gurgaon</small>
+            <iframe
+              title="Jai Hanuman Ji Property location map"
+              src="https://www.google.com/maps?q=28.498570,77.039187&z=15&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+            <a className="map-details" href={mapLink} target="_blank" rel="noreferrer">
+              <span className="pin"><MapPin size={20} fill="currentColor" /></span>
+              <span>
+                <strong>Palam Vihar Extn.</strong>
+                <small>Dharam Colony, Gurgaon</small>
+              </span>
+            </a>
           </div>
         </div>
       </footer>
