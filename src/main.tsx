@@ -84,12 +84,30 @@ function App() {
         </div>
       </nav>
 
+      <div className="availability-ticker" aria-label="Current property availability">
+        <div className="ticker-track">
+          <span>Plots from 25 sq. yards</span>
+          <span>Palam Vihar Extension</span>
+          <span>Sale, purchase & rent</span>
+          <span>Gurgaon property guidance</span>
+          <span>Plots from 25 sq. yards</span>
+          <span>Palam Vihar Extension</span>
+          <span>Sale, purchase & rent</span>
+          <span>Gurgaon property guidance</span>
+        </div>
+      </div>
+
       <section className="hero" id="home">
         <div className="hero-copy">
+          <span className="eyebrow">Gurgaon property specialists</span>
           <h1>जय हनुमान जी प्रॉपर्टीज</h1>
           <p className="tagline">Sabse Sasta (सबसे सस्ता) Properties</p>
           <p className="deal-line">Sale, Purchase & Rent</p>
           <p>Residential & Commercial Property in Gurgaon and nearby locations.</p>
+          <div className="hero-actions">
+            <a className="button button-primary" href="#plots">Explore properties <span aria-hidden="true">↗</span></a>
+            <a className="button button-quiet" href={`tel:+91${phoneNumbers[0]}`}>Talk to us</a>
+          </div>
         </div>
         <div className="hero-images" aria-hidden="true">
           <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80" alt="" />
@@ -193,6 +211,7 @@ function App() {
         </div>
 
         <div className="map-panel">
+          <h3>Find Us</h3>
           <div className="map-card">
             <iframe
               title="Jai Hanuman Ji Property location map"
